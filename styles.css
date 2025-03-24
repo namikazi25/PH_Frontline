@@ -1,0 +1,613 @@
+:root {
+    --primary: #7e57c2;
+    --primary-dark: #4d2c91;
+    --secondary: #ff7043;
+    --background: #1a1a2e;
+    --card-bg: #16213e;
+    --text: #e1e1e6;
+    --text-muted: #8b8b9e;
+    --success: #4caf50;
+    --danger: #f44336;
+    --warning: #ff9800;
+    --easy: #4caf50;
+    --medium: #ff9800;
+    --hard: #f44336;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.game-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo i {
+    font-size: 2rem;
+    color: var(--secondary);
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.player-stats {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.level {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+#playerLevel {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.xp-container {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+}
+
+.xp-bar {
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.xp-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+#xpText {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+.streak {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.streak i {
+    color: var(--secondary);
+}
+
+/* Main Content Layout */
+.main-content {
+    display: flex;
+    gap: 20px;
+}
+
+.sidebar {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.content-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Panel Styles */
+.tasks-panel, .task-list-panel, .calendar-panel, .achievements {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+h2 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+h2 i {
+    color: var(--primary);
+}
+
+/* Form Styles */
+.task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+input, textarea, select {
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(126, 87, 194, 0.3);
+}
+
+textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+button {
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    background-color: var(--primary);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(126, 87, 194, 0.4);
+}
+
+/* Task List Styles */
+.quest-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.task-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s ease;
+    border-left: 4px solid var(--medium);
+}
+
+.task-item.easy {
+    border-left-color: var(--easy);
+}
+
+.task-item.medium {
+    border-left-color: var(--medium);
+}
+
+.task-item.hard {
+    border-left-color: var(--hard);
+}
+
+.task-item:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.task-item.completed {
+    opacity: 0.7;
+}
+
+.task-item.completed .task-content {
+    text-decoration: line-through;
+}
+
+.task-checkbox {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--text-muted);
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.task-checkbox:checked {
+    background-color: var(--success);
+    border-color: var(--success);
+}
+
+.task-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 12px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.task-content {
+    flex: 1;
+}
+
+.task-title {
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.task-meta {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    display: flex;
+    gap: 10px;
+}
+
+.task-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.task-actions button {
+    padding: 5px;
+    background-color: transparent;
+    color: var(--text-muted);
+    border-radius: 4px;
+}
+
+.task-actions button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text);
+    transform: none;
+    box-shadow: none;
+}
+
+.delete-btn:hover {
+    color: var(--danger) !important;
+}
+
+/* Calendar Styles */
+.calendar-panel {
+    flex: 1;
+}
+
+#calendar {
+    height: 500px;
+}
+
+/* Override FullCalendar styles */
+.fc {
+    --fc-border-color: rgba(255, 255, 255, 0.1);
+    --fc-page-bg-color: transparent;
+    --fc-neutral-bg-color: rgba(255, 255, 255, 0.05);
+    --fc-list-event-hover-bg-color: rgba(255, 255, 255, 0.1);
+    --fc-today-bg-color: rgba(126, 87, 194, 0.2);
+    --fc-event-bg-color: var(--primary);
+    --fc-event-border-color: var(--primary);
+    --fc-button-bg-color: var(--primary);
+    --fc-button-border-color: var(--primary);
+    --fc-button-hover-bg-color: var(--primary-dark);
+    --fc-button-hover-border-color: var(--primary-dark);
+    --fc-button-active-bg-color: var(--primary-dark);
+    --fc-button-active-border-color: var(--primary-dark);
+}
+
+.fc-theme-standard .fc-scrollgrid, 
+.fc-theme-standard td, 
+.fc-theme-standard th {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.fc-day-today {
+    background-color: rgba(126, 87, 194, 0.15) !important;
+}
+
+.fc-daygrid-day-number, 
+.fc-col-header-cell-cushion {
+    color: var(--text);
+}
+
+.fc-event {
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 2px;
+    font-size: 0.85rem;
+}
+
+.fc-event-title {
+    font-weight: 600;
+}
+
+/* Achievements Styles */
+.achievement-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.achievement {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: all 0.2s ease;
+}
+
+.achievement i {
+    font-size: 1.2rem;
+    color: var(--success);
+}
+
+.achievement.locked {
+    opacity: 0.6;
+}
+
+.achievement.locked i {
+    color: var(--text-muted);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: modalAppear 0.3s ease-out;
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.level-up-icon {
+    font-size: 3rem;
+    color: var(--secondary);
+    margin-bottom: 15px;
+}
+
+.modal h2 {
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+.modal p {
+    margin-bottom: 20px;
+}
+
+.modal button {
+    margin: 0 auto;
+    min-width: 120px;
+}
+
+/* Achievement Notification */
+.achievement-notification {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--card-bg);
+    border-left: 4px solid var(--secondary);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    transform: translateX(120%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.achievement-notification.show {
+    transform: translateX(0);
+}
+
+.achievement-notification i {
+    font-size: 2rem;
+    color: var(--secondary);
+}
+
+.achievement-notification h3 {
+    margin: 0 0 5px 0;
+    font-size: 1rem;
+}
+
+.achievement-notification p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Animation for task deletion */
+.task-item.deleting {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+/* Empty state styling */
+.empty-state {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive Styles */
+@media (max-width: 1000px) {
+    .main-content {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .player-stats {
+        width: 100%;
+        justify-content: space-around;
+    }
+    
+    .form-row {
+        flex-direction: column;
+    }
+}
+
+/* Task hover effects */
+.task-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.task-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.task-item:hover::before {
+    transform: translateX(100%);
+}
+
+/* Pulsing effect for new tasks */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(126, 87, 194, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(126, 87, 194, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(126, 87, 194, 0); }
+}
+
+.task-item.new {
+    animation: pulse 1.5s ease-out;
+}

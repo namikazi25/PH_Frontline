@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Quest - Gamified Personal Planner</title>
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-dragon"></i>
+                <h1>Task Quest</h1>
+            </div>
+            <div class="player-stats">
+                <div class="level">
+                    <span class="stat-label">Level</span>
+                    <span id="playerLevel">1</span>
+                </div>
+                <div class="xp-container">
+                    <div class="xp-bar">
+                        <div id="xpProgress" class="xp-progress"></div>
+                    </div>
+                    <span id="xpText">XP: 0/100</span>
+                </div>
+                <div class="streak">
+                    <i class="fas fa-fire"></i>
+                    <span id="streakCount">0</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="tasks-panel">
+                    <h2><i class="fas fa-scroll"></i> New Quest</h2>
+                    <div class="task-form">
+                        <input type="text" id="title" placeholder="Quest Title">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><i class="fas fa-calendar"></i> Date</label>
+                                <input type="date" id="date">
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-clock"></i> Time</label>
+                                <input type="time" id="time">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-star"></i> Difficulty</label>
+                            <select id="difficulty">
+                                <option value="easy">Easy (10 XP)</option>
+                                <option value="medium" selected>Medium (20 XP)</option>
+                                <option value="hard">Hard (40 XP)</option>
+                            </select>
+                        </div>
+                        <textarea id="desc" placeholder="Quest Description"></textarea>
+                        <button id="addTaskBtn" onclick="addTask()">
+                            <i class="fas fa-plus"></i> Add Quest
+                        </button>
+                    </div>
+                </div>
+
+                <div class="achievements">
+                    <h2><i class="fas fa-trophy"></i> Achievements</h2>
+                    <div class="achievement-list">
+                        <div class="achievement" id="ach1">
+                            <i class="fas fa-check-circle"></i>
+                            <span>First Quest</span>
+                        </div>
+                        <div class="achievement locked" id="ach2">
+                            <i class="fas fa-fire"></i>
+                            <span>3-Day Streak</span>
+                        </div>
+                        <div class="achievement locked" id="ach3">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>Complete 10 Quests</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-area">
+                <div class="task-list-panel">
+                    <h2><i class="fas fa-tasks"></i> Active Quests</h2>
+                    <div id="taskList" class="quest-list"></div>
+                </div>
+
+                <div class="calendar-panel">
+                    <h2><i class="fas fa-map"></i> Quest Map</h2>
+                    <div id="calendar"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="levelUpModal" class="modal">
+            <div class="modal-content">
+                <i class="fas fa-level-up-alt level-up-icon"></i>
+                <h2>Level Up!</h2>
+                <p>You've reached level <span id="newLevel">2</span>!</p>
+                <button onclick="closeModal()">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
