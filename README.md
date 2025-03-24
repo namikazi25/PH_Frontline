@@ -1,6 +1,6 @@
 # Task Quest - Gamified Personal Planner
 
-![Task Quest Screenshot](images\taskquest-screenshot.png)
+![Task Quest Screenshot](images/taskquest-screenshot.png)
 
 ## Overview
 
