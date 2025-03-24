@@ -61,7 +61,3 @@ No installation required! Simply open `index.html` in your web browser to start 
 ## License
 
 MIT License
-
-## Credits
-
-Created with ❤️ by [Your Name]
